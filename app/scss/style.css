@@ -156,7 +156,7 @@
             transition: max-height 0.5s ease;
         }
 
-/* Initially, set p max-height to auto so it can collapse when clicked */
+        /* Initially, set p max-height to auto so it can collapse when clicked */
         .publi-card .publi-text {
             max-height: 1000px;
             transition: max-height 0.5s ease;
@@ -195,6 +195,7 @@
         .publi-content {
             padding: 20px;
         }
+        
         .publi-title {
             font-family: Merriweather;
             font-size: 32px;
