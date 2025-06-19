@@ -14,6 +14,11 @@
             padding: 0px;
         }
         
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+        
 /* #region Header */
         
         .header {
@@ -391,6 +396,31 @@
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
+        }
+
+        @media (max-width: 460px) {
+            .containertematw {
+                flex-direction: row; /* Asegúrate de que los elementos estén en fila */
+                align-items: center; /* Alinea los elementos verticalmente */
+            }
+        
+            .textotematw {
+                margin-right: 10px; /* Ajusta el margen derecho según sea necesario */
+                flex-grow: 1; /* Permite que el texto ocupe el espacio disponible */
+            }
+        
+            .textotematw h1 {
+                margin-bottom: 0; /* Elimina el margen inferior para alinear mejor */
+            }
+        
+            .checkboxtw {
+                margin: 0 10px; /* Ajusta el margen del checkbox si es necesario */
+            }
+        
+            .textotematw p {
+                margin-top: 5px; /* Añade espacio entre h1 y p */
+                width: 100%; /* Asegúrate de que el párrafo ocupe el ancho completo */
+            }
         }
 
 /* #endregion */
@@ -805,6 +835,7 @@
             display: flex;
             align-items: center;
         }
+
         .publi-recommendation-alo img {
             width: 50px;
             height: 50px;
@@ -812,10 +843,194 @@
             margin-right: 15px;
         }
 
+        @media (max-width: 600px) {
+            
+            .row-alo-header {
+                height: auto;
+                flex-direction: column;
+                padding-left: 6%;
+                align-items: normal;
+            }
+
+            .publi-recommendation-alo {
+                padding-bottom: 3%;
+            }
+
+            .row-alo-header h1 {
+                font-family: Merriweather;
+                color: white;
+                font-size: 32px;
+                margin: 0;
+                padding-top: 10%;
+                padding-bottom: 6%;
+            }
+            
+            .row-alo {
+                flex-direction: column;
+                height: auto;
+                padding: 20px;
+                overflow: hidden;
+                display: flex;
+                position: relative;
+                background-size: cover;
+                background-position: center;
+                background-color: rgba(0, 0, 0, 0.45);
+
+            }
+
+            .row-alo::before {
+                content: ''; /* Required for pseudo-elements */
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background-color: rgba(0, 0, 0, 0.60); /* Black with 45% opacity */
+                z-index: 1; /* Place above the background */
+            }
+
+            .column-alo-pic img {
+                display: none;
+            }
+    
+        
+            .column-alo-txt, .column-alo-ico {
+                text-align: center;
+                width: 100%;
+                padding: 10px;
+                margin: 0 auto;
+                z-index: 1;
+            }
+        
+            .column-alo-txt h1{
+                color: white;
+            }
+
+            .column-alo-txt h2{
+                color: white;
+            }
+
+            .column-alo-txt p{
+                color: white;
+            }
+
+
+            .column-alo-ico img {
+                width: 60px;
+                height: 60px;
+                margin: 10px auto;
+                z-index: 1;
+                filter: brightness(0) invert(1);
+            }
+
+        }
+        
+
 /* #endregion */
 
 /* #region Cuidate, querete */
 
+        .cqoo-container {
+            max-width: 880px;
+            margin: 0 auto;
+            padding: 20px;
+        }
 
+        .cqoo-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .cqoo-profile-img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background-color: #57adff;
+            margin: 0 auto 15px;
+            background-image: url(IRMA.jpg);
+            background-size: cover;
+            background-position: center;
+        }
+
+        .cqoo-title {
+            font-size: 32px;
+            color: #000;
+            margin-bottom: 10px;
+            font-family: Merriweather;
+        }
+
+        .cqoo-subtitle {
+            font-size: 20px;
+            color: #555;
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.4;
+            font-family: Titillium Web;
+        }
+
+        .cqoo-extensions-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .cqoo-extension-card {
+            border: 1px solid #57adff;
+            border-radius: 8px;
+            padding: 3%;
+            display: flex;
+            align-items: center;
+            transition: transform 0.2s;
+        }
+
+        .cqoo-extension-card a{
+            text-decoration: none;
+        }
+
+        .cqoo-extension-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .cqoo-extension-icon {
+            width: 40px;
+            height: 40px;
+            margin: 0 18px;
+            object-fit: contain;
+        }
+
+        .cqoo-extension-content {
+            flex-grow: 1;
+        }
+
+        .cqoo-extension-name {
+            font-size: 20px;
+            font-weight: bold;
+            color: #333;
+            margin-top: 10px;
+            margin-bottom: 6px;
+            font-family: Titillium Web;
+        }
+
+        .cqoo-extension-description {
+            font-size: 16px;
+            color: #666;
+            line-height: 1.4;
+            font-family: Titillium Web;
+            margin-bottom: 10px;
+            margin-top: 0;
+        }
+
+        .cqoo-extension-name a, .cqoo-extension-description a {
+            text-decoration: none;
+
+        }
+
+        @media (max-width: 420px) {
+            .cqoo-container{
+                display: none;
+            }
+        }
 
 /* #endregion */

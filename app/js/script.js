@@ -103,3 +103,24 @@ document.querySelectorAll('.vids').forEach((vid, index) => {
         localStorage.setItem(`vid-${index}`, clicked);
     });
 });
+
+function setBackgroundImages() {
+    const pics = document.querySelectorAll('.row-alo');
+
+    pics.forEach(pic => {
+        const imageUrl = pic.getAttribute('data-bg');
+        if (window.innerWidth < 600) {
+            pic.style.backgroundImage = `url(${imageUrl})`;
+            pic.style.backgroundSize = 'cover';
+            pic.style.backgroundPosition = 'center';
+        } else {
+            pic.style.backgroundImage = ''; // Remove background on larger screens
+        }
+    });
+}
+
+// Run on load
+setBackgroundImages();
+
+// Run on window resize
+window.addEventListener('resize', setBackgroundImages);
