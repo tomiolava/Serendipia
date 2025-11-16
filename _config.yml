@@ -1,2 +1,7 @@
 title: "Serendipia"
 description: "Proyecto Serendipia"
+collections:
+  ediciones:
+    output: false
+  recomendaciones:
+    output: false
