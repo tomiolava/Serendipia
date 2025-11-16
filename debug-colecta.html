@@ -1,0 +1,33 @@
+---
+---
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Debug colecciones Serendipia</title>
+</head>
+<body>
+  <h1>Debug de colecciones de Serendipia</h1>
+
+  <h2>Ediciones</h2>
+  <ul>
+    {% for edicion in site.ediciones %}
+      <li>
+        Edición número {{ edicion.numero }} – {{ edicion.titulo }} ({{ edicion.fecha }})
+      </li>
+    {% endfor %}
+  </ul>
+
+  <h2>Recomendaciones</h2>
+  <ul>
+    {% for reco in site.recomendaciones %}
+      <li>
+        <strong>{{ reco.titulo }}</strong><br>
+        Tipo: {{ reco.tipo_contenido }} – Sección: {{ reco.seccion }} – Edición: {{ reco.edicion }}<br>
+        URL: {{ reco.url }}
+      </li>
+    {% endfor %}
+  </ul>
+</body>
+</html>
