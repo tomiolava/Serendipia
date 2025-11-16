@@ -1,0 +1,34 @@
+---
+---
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Edición actual - Serendipia</title>
+</head>
+<body>
+  <h1>Edición actual de Serendipia</h1>
+
+  {% assign ediciones_ordenadas = site.ediciones | sort: "numero" %}
+  {% assign edicion_actual = ediciones_ordenadas | last %}
+
+  <h2>Edición {{ edicion_actual.numero }} – {{ edicion_actual.titulo }}</h2>
+  <p><em>{{ edicion_actual.fecha }}</em></p>
+  <p>{{ edicion_actual.descripcion }}</p>
+
+  <h3>Recomendaciones de esta edición</h3>
+  <ul>
+    {% assign recos_actuales = site.recomendaciones | where: "edicion", edicion_actual.numero %}
+    {% for reco in recos_actuales %}
+      <li>
+        <strong>{{ reco.titulo }}</strong><br>
+        Tipo: {{ reco.tipo_contenido }} – Sección: {{ reco.seccion }}<br>
+        Curador: {{ reco.curador }}<br>
+        Tiempo estimado: {{ reco.tiempo_estimado }}<br>
+        URL: <a href="{{ reco.url }}">{{ reco.url }}</a>
+      </li>
+    {% endfor %}
+  </ul>
+</body>
+</html>
