@@ -16,6 +16,14 @@
 </head>
 
 <body>
+      {% assign ediciones_ordenadas = site.ediciones | sort: "numero" %}
+  {% assign edicion_actual = ediciones_ordenadas | last %}
+
+  <!-- Mensaje de prueba: podés borrarlo después -->
+  <p style="text-align:center; margin-top: 10px; font-size: 14px;">
+    Estás viendo la edición {{ edicion_actual.numero }} – {{ edicion_actual.titulo }} ({{ edicion_actual.fecha }})
+  </p>
+
         
 <!-- #region Barra de navegación -->
     <div class="header">
