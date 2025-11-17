@@ -43,62 +43,38 @@
 <!-- #region Cuadrícula de Recomendaciones -->
     <div class="cuadribody">
         <div class="grid-container">
-            <div class="column">
-                <div class="publi-card" data-id="1" data-link="https://open.spotify.com/episode/52keoI0m725CRgPBPorhWJ?si=c1fd181f27c348a1">
-                    <div class="publi-header">Podcasts</div>
-                    <div class="publi-badge">P</div>
-                    <div class="publi-content">
-                        <h2 class="publi-title">Laura Ramos descubrió que su niñera era de la KGB</h2>
-                        <p class="publi-subtitle">Lo cuenta en un libro y cuenta el libro en este podcast.</p>
-                        <p class="publi-text"></p>
-                        <div class="publi-time">25 MIN DE ESCUCHA</div>
-                        <div class="publi-recommendation">
-                            <img src="tink.png" alt="Roberto TinkyWinky">
-                                <div><div class="recomienda-titulo">RECOMIENDA:</div>
-                                <div class="recomienda-recomendador">Tomás</div></div></div></div>
-                    
-                </div>
-                <div class="publi-card" data-id="2" data-link="https://www.journals.uchicago.edu/doi/10.1086/737789">
-                    <div class="publi-header">PAPERS</div>
-                    <div class="publi-badge">S</div>
-                    <div class="publi-content">
-                        <h2 class="publi-title">Un paper dice que a Milei lo explica la promesa de dolarización</h2>
-                        <p class="publi-subtitle">La dolarización mileísta como clave para explicar por qué la derecha radical crece distinto en Argentina que en el resto del mundo.</p>
-    
-                        <div class="publi-time">20 MIN DE LECTURA</div>
-                        <div class="publi-recommendation">
-                            <img src="pipo.jpg" alt="Roberto TinkyWinky">
-                                <div><div class="recomienda-titulo">RECOMIENDA:</div>
-                                <div class="recomienda-recomendador">Tomás</div></div></div></div></div>
-                    
+                {% assign recos = site.recomendaciones
+         | where: "edicion", edicion_actual.numero
+         | where: "seccion", "Recomendaciones" %}
+
+    {% for reco in recos %}
+      <div class="column">
+        <div class="publi-card" data-id="{{ forloop.index }}" data-link="{{ reco.link }}">
+          <div class="publi-header">{{ reco.tipo_contenido | upcase }}</div>
+          <div class="publi-badge">
+            {{ reco.tipo_contenido | slice: 0,1 | upcase }}
+          </div>
+          <div class="publi-content">
+            <h2 class="publi-title">{{ reco.titulo }}</h2>
+            <p class="publi-subtitle">{{ reco.bajada }}</p>
+            <p class="publi-text"></p>
+            <div class="publi-time">{{ reco.tiempo_estimado }}</div>
+            <div class="publi-recommendation">
+              {% if reco.imagen and reco.imagen != "" %}
+                <img src="{{ reco.imagen }}" alt="{{ reco.curador }}">
+              {% else %}
+                <img src="tink.png" alt="{{ reco.curador }}">
+              {% endif %}
+              <div>
+                <div class="recomienda-titulo">RECOMIENDA:</div>
+                <div class="recomienda-recomendador">{{ reco.curador }}</div>
+              </div>
             </div>
-            <div class="column">
-                <div class="publi-card" data-id="3" data-link="https://www.infobae.com/cultura/2025/11/08/lucrecia-martel-prefiero-que-me-juzgue-la-historia-pero-no-dejar-de-opinar-sobre-mi-tiempo/">
-                    <div class="publi-header">ARTÍCULO</div>
-                    <div class="publi-badge">D</div>
-                    <div class="publi-content">
-                        <h2 class="publi-title">Lucrecia Martel prefiere que la juzgue la historia pero no dejar de opinar sobre su tiempo</h2>
-                        <p class="publi-subtitle">Una entrevista a propósito del lanzamiento del libro "Un destino común", de Caja Negra </p>
-                        <p class="publi-text"> Dice que la cultura son unos  hilos invisibles que nos unen a los otros y nos hacen sentirnos menos solos.</p>
-                        <div class="publi-time">13 MIN DE LECTURA</div>
-                        <div class="publi-recommendation">
-                            <img src="balas.jpg" alt="Roberto TinkyWinky">
-                                <div><div class="recomienda-titulo">RECOMIENDA:</div>
-                                <div class="recomienda-recomendador">Tomás</div></div></div></div>
-                    
-                </div>
-                <div class="publi-card" data-id="4" data-link="https://cenital.com/entrevista-a-simon-reynolds-en-el-pasado-tambien-podemos-encontrar-el-futuro/">
-                    <div class="publi-header">ENTREVISTA</div>
-                    <div class="publi-badge">E</div>
-                    <div class="publi-content">
-                        <h2 class="publi-title">En el pasado también podemos encontrar el futuro</h2>
-                        <p class="publi-subtitle"> Paul Reynolds habla del colapso temporal que generan las plataformas y de la pérdida de contexto. </p>
-                        <p class="publi-text">¿Y si el futuro está en nuestro pasado?.</p>
-                        <div class="publi-time">18 MIN DE LECTURA</div>
-                        <div class="publi-recommendation">
-                            <img src="vuit.jpg" alt="Tomás">
-                                <div><div class="recomienda-titulo">RECOMIENDA:</div>
-                                <div class="recomienda-recomendador">Tomás</div></div></div></div></div>        
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+       
             </div>
         </div>
     </div>
