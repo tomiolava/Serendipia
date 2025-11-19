@@ -3,7 +3,6 @@ Include de sección de la home
 Parámetros:
 - edicion: número de edición (ej: 1)
 - seccion: nombre de la sección (ej: "Videos")
-- wrapper_class: clase del contenedor (ej: "containervids")
 - card_class: clase de cada tarjeta (ej: "vids")
 {% endcomment %}
 
@@ -11,32 +10,30 @@ Parámetros:
   | where: "edicion", include.edicion
   | where: "seccion", include.seccion %}
 
-<div class="{{ include.wrapper_class | default: 'contenedor-recos' }}">
-  {% for reco in recos_filtradas %}
-    <div class="{{ include.card_class | default: 'reco-card' }}">
-      {% if reco.link %}
-      <a href="{{ reco.link }}" class="vid-link" target="_blank"></a>
-      {% endif %}
+{% for reco in recos_filtradas %}
+  <div class="{{ include.card_class | default: 'reco-card' }}">
+    {% if reco.link %}
+    <a href="{{ reco.link }}" class="vid-link" target="_blank"></a>
+    {% endif %}
 
-      {% if reco.imagen %}
-      <div class="bg-container-vids">
-        <img src="{{ reco.imagen }}" alt="{{ reco.titulo }}" class="bg-vids">
-      </div>
-      {% endif %}
-
-      {% if reco.badge %}
-      <div class="vid-badge">{{ reco.badge }}</div>
-      {% endif %}
-
-      <h1>{{ reco.titulo }}</h1>
-
-      <div class="lineavid"></div>
-
-      <p>{{ reco.content | markdownify }}</p>
-
-      {% if reco.curador %}
-      <p class="reco-curador">Recomienda: {{ reco.curador }}</p>
-      {% endif %}
+    {% if reco.imagen %}
+    <div class="bg-container-vids">
+      <img src="{{ reco.imagen }}" alt="{{ reco.titulo }}" class="bg-vids">
     </div>
-  {% endfor %}
-</div>
+    {% endif %}
+
+    {% if reco.badge %}
+    <div class="vid-badge">{{ reco.badge }}</div>
+    {% endif %}
+
+    <h1>{{ reco.titulo }}</h1>
+    <div class="lineavid"></div>
+
+    <p>{{ reco.content | markdownify }}</p>
+
+    {% if reco.curador %}
+    <p class="reco-curador">Recomienda: {{ reco.curador }}</p>
+    {% endif %}
+  </div>
+{% endfor %}
+
