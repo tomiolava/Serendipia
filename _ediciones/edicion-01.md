@@ -1,6 +1,7 @@
 ---
+layout: edicion
 numero: 1
+titulo: "Edición 01 — Piloto"
 fecha: 2025-11-16
-titulo: "Edición 01"
-descripcion: "Primera edición modelo de Serendipia en Jekyll."
+descripcion: "La primera edición de Serendipia."
 ---
