@@ -1,5 +1,8 @@
 ---
 ---
+{% assign eds_ordenadas = site.ediciones | sort: "numero" %}
+{% assign ultima = eds_ordenadas | last %}
+{% assign ultima_num = ultima.numero %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -118,11 +121,14 @@
 <!-- #endregion -->
 
 <!-- #region Videos que no te destruyen la psiquis -->
-<div class="bg-videos">
-    <div class="supervids">
-        <div class="headervids"><img src="youpause.svg" height="40px" alt=""><h1>Videos</h1><p>que no te destruyen la psiquis</p></div>
-        <div class="lineavidheader"></div>
-        <div class="containervids">
+<div class="containervids">
+  {% include seccion-home.html
+     edicion=ultima_num
+     seccion="Videos"
+     wrapper_class="containervids"
+     card_class="vids"
+  %}
+</div>
             <div class="vids">
                 <a href="https://www.youtube.com/watch?v=zpAeygE4d1A&t=45s" class="vid-link" target="_blank"></a> <!-- Link clickeable -->
                 <div class="bg-container-vids"><img src="https://laughingsquid.com/wp-content/uploads/2025/07/Total-Pixel-Space.jpg" alt="Video thumbnail" class="bg-vids"></div>    
