@@ -1033,4 +1033,39 @@
             }
         }
 
+/* Contenedor general de los videos */
+.containervids {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 16px;
+}
+
+/* Cada tarjeta de video */
+.vids {
+  position: relative;
+}
+
+/* Ajuste básico de la imagen para que no rompa el layout */
+.bg-container-vids {
+  width: 100%;
+  overflow: hidden;
+}
+
+.bg-vids {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* A partir de pantallas medianas: 2 columnas */
+@media (min-width: 768px) {
+  .containervids {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+
 /* #endregion */
