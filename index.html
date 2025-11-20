@@ -84,15 +84,26 @@
 <!-- #endregion -->
 
 <!-- #region Videos que no te destruyen la psiquis -->
-<div class="containervids">
-  {% include seccion-home.html
-     edicion=ultima_num
-     seccion="Videos"
-     wrapper_class="containervids"
-     card_class="vids"
-  %}
+<div class="videos-section">
+
+  <div class="videos-header">
+    <img src="youpause.svg" height="40px" alt="">
+    <h1>Videos que no te arruinan la psiquis</h1>
+  </div>
+
+  <div class="lineavidheader"></div>
+
+  <div class="containervids">
+    {% include seccion-home.html
+       edicion=ultima_num
+       seccion="Videos"
+       card_class="vids"
+    %}
+  </div>
+
 </div>
 <!-- #endregion -->
+
 
 <!-- #region Un árbol, un libro, una obra de teatro -->
 <div class="bg-alo">
