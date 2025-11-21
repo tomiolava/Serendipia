@@ -10,7 +10,7 @@ Parámetros:
   | where: "edicion", include.edicion
   | where: "seccion", include.seccion %}
 
-{% for reco in recos_filtradas limit:4 %}
+{% for reco in recos_filtradas limit:3 %}
   <div class="{{ include.card_class | default: 'reco-card' }}">
     {% if reco.link %}
     <a href="{{ reco.link }}" class="vid-link" target="_blank"></a>
