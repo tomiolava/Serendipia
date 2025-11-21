@@ -7,7 +7,7 @@
 
 {% assign videos = edicion_actual.videos %}
 
-{% if videos and videos.size > 0 %}
+{% if videos %}
 <div class="bg-videos">
   <div class="supervids">
     <div class="headervids">
@@ -18,7 +18,9 @@
     <div class="lineavidheader"></div>
 
     <div class="containervids">
-      {% for video in videos %}
+
+      {# --- 1) Mostrar los videos reales --- #}
+      {% for video in videos limit: 3 %}
       <div class="vids">
         <a href="{{ video.link }}" class="vid-link" target="_blank"></a>
         <div class="bg-container-vids">
@@ -32,8 +34,16 @@
         <p>{{ video.descripcion }}</p>
       </div>
       {% endfor %}
-    </div>
-  </div>
-</div>
-{% endif %}
-<!-- #endregion -->
+
+      {# --- 2) Completar con tarjetas placeholder hasta llegar a 3 --- #}
+      {% assign cantidad = videos | size %}
+      {% assign faltan = 3 | minus: cantidad %}
+
+      {% for i in (1..faltan) %}
+      <div class="vids placeholder">
+        <div class="bg-container-vids">
+          <img src="img/video-placeholder.jpg" alt="Video próximamente" class="bg-vids">
+        </div>
+        <div class="vid-badge">★</div>
+        <h1>Próximamente</h1>
+        <div cl
