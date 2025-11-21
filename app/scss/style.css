@@ -1125,6 +1125,9 @@
   background: rgba(0,0,0,0.08);
   margin-bottom: 28px;
 }
+.vids {
+  width: 100% !important;
+}
 
 
 /* #endregion */
