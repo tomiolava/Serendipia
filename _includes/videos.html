@@ -7,17 +7,8 @@
 
 {% assign videos = edicion_actual.videos %}
 
+{% if videos and videos.size > 0 %}
 <div class="bg-videos">
-  <!-- DEBUG: esto no debería verse en producción, pero ahora nos sirve -->
-  <pre style="font-size: 12px; line-height: 1.4; padding: 8px; border: 1px solid #ccc; margin-bottom: 16px;">
-EDICION_ACTUAL:
-  numero: {{ edicion_actual.numero }}
-  titulo: {{ edicion_actual.titulo }}
-  tiene_videos?: {% if videos %}sí{% else %}no{% endif %}
-  cantidad_videos: {% if videos %}{{ videos | size }}{% else %}0{% endif %}
-  </pre>
-
-  {% if videos and videos.size > 0 %}
   <div class="supervids">
     <div class="headervids">
       <img src="youpause.svg" height="40px" alt="">
@@ -27,7 +18,7 @@ EDICION_ACTUAL:
     <div class="lineavidheader"></div>
 
     <div class="containervids">
-      {% for video in videos limit: 3 %}
+      {% for video in videos %}
       <div class="vids">
         <a href="{{ video.link }}" class="vid-link" target="_blank"></a>
         <div class="bg-container-vids">
@@ -43,8 +34,6 @@ EDICION_ACTUAL:
       {% endfor %}
     </div>
   </div>
-  {% else %}
-  <p>No hay videos cargados para la edición actual.</p>
-  {% endif %}
 </div>
+{% endif %}
 <!-- #endregion -->
