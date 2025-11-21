@@ -5,3 +5,13 @@ collections:
     output: true
   recomendaciones:
     output: true
+
+collections:
+  ediciones:
+    output: true
+  recomendaciones:
+    output: false
+  videos:
+    output: false
+  trescosas:
+    output: false
