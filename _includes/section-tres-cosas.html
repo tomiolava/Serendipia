@@ -1,1 +1,46 @@
+<!-- #region Tres Cosas -->
+<section id="tres-cosas" class="tres-cosas-section">
+
+  <div class="tres-cosas-header">
+    <h1>Tres Cosas</h1>
+    <p>Recomendaciones fuera de Internet</p>
+    <div class="lineavidheader"></div>
+  </div>
+
+  {% assign edicion_actual = site.trescosas | where: "edicion", 1 | first %}
+
+  {% if edicion_actual %}
+  <div class="tres-cosas-persona">
+    <h2>{{ edicion_actual.persona }}</h2>
+    <p>{{ edicion_actual.bajada }}</p>
+  </div>
+
+  <div class="tres-cosas-grid">
+
+    <article class="tres-cosa-card">
+      <h3 class="tres-cosa-tipo">{{ edicion_actual.item1_titulo }}</h3>
+      <h2 class="tres-cosa-nombre">{{ edicion_actual.item1_nombre }}</h2>
+      <p class="tres-cosa-detalle">{{ edicion_actual.item1_detalle }}</p>
+    </article>
+
+    <article class="tres-cosa-card">
+      <h3 class="tres-cosa-tipo">{{ edicion_actual.item2_titulo }}</h3>
+      <h2 class="tres-cosa-nombre">{{ edicion_actual.item2_nombre }}</h2>
+      <p class="tres-cosa-detalle">{{ edicion_actual.item2_detalle }}</p>
+    </article>
+
+    <article class="tres-cosa-card">
+      <h3 class="tres-cosa-tipo">{{ edicion_actual.item3_titulo }}</h3>
+      <h2 class="tres-cosa-nombre">{{ edicion_actual.item3_nombre }}</h2>
+      <p class="tres-cosa-detalle">{{ edicion_actual.item3_detalle }}</p>
+    </article>
+
+  </div>
+
+  {% else %}
+    <p>No hay edición cargada todavía.</p>
+  {% endif %}
+
+</section>
+<!-- #endregion Tres Cosas -->
 
