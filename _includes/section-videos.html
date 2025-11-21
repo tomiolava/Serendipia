@@ -1,0 +1,42 @@
+<!-- #region Videos -->
+<section id="videos">
+<div class="bg-videos">
+    <div class="supervids">
+        <div class="headervids">
+            <img src="youpause.svg" height="40px" alt="">
+            <h1>Videos</h1>
+            <p>que no te destruyen la psiquis</p>
+        </div>
+        <div class="lineavidheader"></div>
+
+        {% assign videos_edicion = site.videos | where: "edicion", page.edicion_actual | sort: "orden" %}
+
+        <div class="containervids">
+            {% for video in videos_edicion limit: 3 %}
+            <div class="vids">
+
+                <!-- LINK CLICKEABLE -->
+                <a href="{{ video.link }}" class="vid-link" target="_blank"></a>
+
+                <!-- IMAGEN -->
+                <div class="bg-container-vids">
+                    <img src="{{ video.imagen }}" alt="{{ video.alt }}" class="bg-vids">
+                </div>
+
+                <!-- BADGE -->
+                <div class="vid-badge">{{ video.badge }}</div> 
+
+                <!-- TÍTULO -->
+                <h1>{{ video.titulo }}</h1>
+
+                <div class="lineavid"></div>
+
+                <!-- DESCRIPCIÓN -->
+                <p>{{ video.descripcion }}</p>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+</section>
+<!-- #endregion Videos -->
