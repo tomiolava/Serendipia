@@ -2,6 +2,9 @@
 edicion: 1
 
 persona: "Jack Blacklivesmatter"
+persona_imagen: "jackb.webp"
+persona_alt: "Jack"
+badge_letra: "Q"
 
 item1_titulo: "Jamás tan cerca"
 item1_subtitulo: "De Agustín J. Valle"
@@ -24,5 +27,3 @@ item3_imagen: "suavecita-x-irish-1-960x540.jpeg"
 item3_alt: "obra"
 item3_link: "https://www.alternativateatral.com/obra83564-suavecita"
 ---
-
-
