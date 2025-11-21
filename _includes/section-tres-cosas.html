@@ -1,46 +1,58 @@
 <!-- #region Tres Cosas -->
-<section id="tres-cosas" class="tres-cosas-section">
+{% assign edicion_actual = site.trescosas | where: "edicion", 1 | first %}
 
-  <div class="tres-cosas-header">
-    <h1>Tres Cosas</h1>
-    <p>Recomendaciones fuera de Internet</p>
-    <div class="lineavidheader"></div>
-  </div>
-
-  {% assign edicion_actual = site.trescosas | where: "edicion", 1 | first %}
-
-  {% if edicion_actual %}
-  <div class="tres-cosas-persona">
-    <h2>{{ edicion_actual.persona }}</h2>
-    <p>{{ edicion_actual.bajada }}</p>
-  </div>
-
-  <div class="tres-cosas-grid">
-
-    <article class="tres-cosa-card">
-      <h3 class="tres-cosa-tipo">{{ edicion_actual.item1_titulo }}</h3>
-      <h2 class="tres-cosa-nombre">{{ edicion_actual.item1_nombre }}</h2>
-      <p class="tres-cosa-detalle">{{ edicion_actual.item1_detalle }}</p>
-    </article>
-
-    <article class="tres-cosa-card">
-      <h3 class="tres-cosa-tipo">{{ edicion_actual.item2_titulo }}</h3>
-      <h2 class="tres-cosa-nombre">{{ edicion_actual.item2_nombre }}</h2>
-      <p class="tres-cosa-detalle">{{ edicion_actual.item2_detalle }}</p>
-    </article>
-
-    <article class="tres-cosa-card">
-      <h3 class="tres-cosa-tipo">{{ edicion_actual.item3_titulo }}</h3>
-      <h2 class="tres-cosa-nombre">{{ edicion_actual.item3_nombre }}</h2>
-      <p class="tres-cosa-detalle">{{ edicion_actual.item3_detalle }}</p>
-    </article>
-
-  </div>
-
-  {% else %}
-    <p>No hay edición cargada todavía.</p>
-  {% endif %}
-
+{% if edicion_actual %}
+<section id="tres-cosas">
+    <div class="bg-alo">
+    <div class="container-alo">
+        <div class="row-alo-header">
+            <h1>Un libro, <br>un árbol,<br> una obra de teatro</h1>
+            <div class="publi-recommendation-alo"> 
+                <img src="jackb.webp" alt="Jack">
+                <div>
+                    <div class="curador-alo">CURADURÍA:</div>
+                    <div class="recomendador-alo">Jack Blacklivesmatter</div></div></div>
+        </div>
+        <div class="row-alo" data-bg="libro.jpg">
+            <div class="column-alo-pic"><img src="libro.jpg" alt="librito"></div>
+            <div class="column-alo-txt">
+                <h1>Jamás tan cerca</h1>
+                <h2>De Agustín J. Valle</h2>
+                <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam,</p>
+            </div>
+            <div class="column-alo-ico">
+                <a href="https://www.planetadelibros.com.ar/libro-jamas-tan-cerca/343855" target="_blank"><img src="compralibro.svg" alt="compralibro"></a>
+            </div>
+        </div>
+        <div class="row-alo"  data-bg="palmera-de-avellaneda.jpg">
+            <div class="column-alo-pic"><img src="palmera-de-avellaneda.jpg" alt="arbolito"></div>
+            <div class="column-alo-txt">
+                <h1>Palmera de Avellaneda</h1>
+                <h2>Av. Alvear 2089</h2>
+                <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam,</p>
+            </div>
+            <div class="column-alo-ico">
+                <a href="https://maps.app.goo.gl/tMvx7wAMqeMHseKf7" target="_blank"><img src="location.svg" alt="locarbol"></a>
+            </div>
+        </div>
+        <div class="row-alo" data-bg="suavecita-x-irish-1-960x540.jpeg">
+            <div class="column-alo-pic"><img src="suavecita-x-irish-1-960x540.jpeg" alt="obra"></div>
+            <div class="column-alo-txt">
+                <h1>Suavecita</h1>
+                <h2>De Martín Bontempo</h2>
+                <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam,</p>
+            </div>
+            <div class="column-alo-ico">
+                <a href="https://www.alternativateatral.com/obra83564-suavecita" target="_blank"><img src="entradukis.svg" alt="entradas"></a>
+            </div>
+        </div>
+        <div class="alo-badge">Q</div>
+    </div>
+</div>
 </section>
+{% else %}
+<section id="tres-cosas">
+    <p>Pronto vas a encontrar acá tres cosas recomendadas.</p>
+</section>
+{% endif %}
 <!-- #endregion Tres Cosas -->
-
