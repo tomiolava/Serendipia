@@ -8,7 +8,7 @@
             <div class="row-alo-header">
                 <h1>Un libro, <br>un árbol,<br> una obra de teatro</h1>
                 <div class="publi-recommendation-alo"> 
-                    <img src="jackb.webp" alt="Jack">
+                    <img src="{{ edicion_actual.persona_imagen }}" alt="{{ edicion_actual.persona_alt }}">
                     <div>
                         <div class="curador-alo">CURADURÍA:</div>
                         <div class="recomendador-alo">{{ edicion_actual.persona }}</div>
@@ -67,7 +67,7 @@
                 </div>
             </div>
 
-            <div class="alo-badge">Q</div>
+            <div class="alo-badge">{{ edicion_actual.badge_letra }}</div>
         </div>
     </div>
 </section>
