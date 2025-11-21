@@ -1,6 +1,5 @@
 <!-- #region Videos que no te destruyen la psiquis -->
-{% assign eds_ordenadas = site.ediciones | sort: "numero" %}
-{% assign edicion_actual = eds_ordenadas | last %}
+{% assign edicion_actual = site.ediciones | where: "edicion_actual", true | first %}
 {% assign videos = edicion_actual.videos %}
 
 {% if videos and videos.size > 0 %}
@@ -33,7 +32,7 @@
 </div>
 {% else %}
 {%- comment -%}
-Si llegás a ver esto en el HTML generado, es que la edición no tiene videos.
+No hay videos en la edicion_actual.
 {%- endcomment -%}
 {% endif %}
 <!-- #endregion -->
