@@ -1,9 +1,23 @@
 <!-- #region Videos que no te destruyen la psiquis -->
 {% assign edicion_actual = site.ediciones | where: "edicion_actual", true | first %}
+{% if edicion_actual == nil %}
+  {% assign ediciones_ordenadas = site.ediciones | sort: "numero" %}
+  {% assign edicion_actual = ediciones_ordenadas | last %}
+{% endif %}
+
 {% assign videos = edicion_actual.videos %}
 
-{% if videos and videos.size > 0 %}
 <div class="bg-videos">
+  <!-- DEBUG: esto no debería verse en producción, pero ahora nos sirve -->
+  <pre style="font-size: 12px; line-height: 1.4; padding: 8px; border: 1px solid #ccc; margin-bottom: 16px;">
+EDICION_ACTUAL:
+  numero: {{ edicion_actual.numero }}
+  titulo: {{ edicion_actual.titulo }}
+  tiene_videos?: {% if videos %}sí{% else %}no{% endif %}
+  cantidad_videos: {% if videos %}{{ videos | size }}{% else %}0{% endif %}
+  </pre>
+
+  {% if videos and videos.size > 0 %}
   <div class="supervids">
     <div class="headervids">
       <img src="youpause.svg" height="40px" alt="">
@@ -29,10 +43,8 @@
       {% endfor %}
     </div>
   </div>
+  {% else %}
+  <p>No hay videos cargados para la edición actual.</p>
+  {% endif %}
 </div>
-{% else %}
-{%- comment -%}
-No hay videos en la edicion_actual.
-{%- endcomment -%}
-{% endif %}
 <!-- #endregion -->
