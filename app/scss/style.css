@@ -1128,6 +1128,21 @@
 .vids {
   width: 100% !important;
 }
+/* Imagen dentro de las tarjetas de video */
+.bg-container-vids {
+  width: 100%;
+  aspect-ratio: 16 / 9;   /* relación 16:9 */
+  overflow: hidden;
+}
+
+/* La imagen llena todo el contenedor sin deformarse */
+.bg-vids {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;      /* recorta un poquito si hace falta, pero llena */
+}
+
 
 
 /* #endregion */
