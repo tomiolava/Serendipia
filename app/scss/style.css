@@ -1142,6 +1142,32 @@
   display: block;
   object-fit: cover;      /* recorta un poquito si hace falta, pero llena */
 }
+/* Estado base de la card de video */
+.vids {
+  position: relative;
+  background-color: #ffffff;
+  border-radius: 16px;
+  overflow: hidden;
+  transition:
+    transform 0.18s ease-out,
+    box-shadow 0.18s ease-out,
+    background-color 0.18s ease-out,
+    color 0.18s ease-out;
+}
+
+/* Efecto al pasar el mouse */
+.vids:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.18);
+  background-color: #111111;
+  color: #ffffff;
+}
+
+/* Aseguramos que el texto cambie también a blanco */
+.vids:hover h1,
+.vids:hover p {
+  color: #ffffff;
+}
 
 
 
