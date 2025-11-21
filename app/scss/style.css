@@ -487,20 +487,21 @@
         }
 
         .containervids {
-            display: grid;
-            max-width: 840px;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px 20px;
-            justify-content: center;
-            justify-items: center;
-        }
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 16px;
+}
 
-        @media (max-width:880px) {
-            .containervids {
-                grid-template-columns: 1fr;
-            }
+/* En pantallas medianas y grandes: 3 columnas */
+@media (min-width: 768px) {
+  .containervids {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
 
-        }
 
         .vids {
             position: relative;
