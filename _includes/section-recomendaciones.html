@@ -1,18 +1,5 @@
-<!-- DEBUG RECOMENDACIONES -->
-<section style="border: 2px solid red; padding: 1rem; margin: 2rem 0;">
-  <h1>DEBUG Recomendaciones</h1>
-
-  <p>Total en <code>site.recomendaciones</code>:
-    {{ site.recomendaciones | size }}
-  </p>
-
-  <ul>
-    {% for reco in site.recomendaciones %}
-      <li>
-        path: {{ reco.path }}<br>
-        titulo: {{ reco.titulo }}<br>
-        edicion: {{ reco.edicion }}
-      </li>
-    {% endfor %}
-  </ul>
+<section style="border: 5px solid fuchsia; padding: 20px; margin: 20px 0;">
+  <h1>DEBUG RECOMENDACIONES EN LA HOME</h1>
+  <p>Si ves esto, el include section-recomendaciones.html se está ejecutando.</p>
 </section>
+
