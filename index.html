@@ -47,43 +47,8 @@ edicion_actual: 1
 <!-- #endregion -->
     
 <!-- #region Cuadrícula de Recomendaciones -->
-    <div class="cuadribody">
-        <div class="grid-container">
-                {% assign recos = site.recomendaciones
-         | where: "edicion", edicion_actual.numero
-         | where: "seccion", "Recomendaciones" %}
+    {% include section-recomendaciones.html %}
 
-    {% for reco in recos %}
-      <div class="column">
-        <div class="publi-card" data-id="{{ forloop.index }}" data-link="{{ reco.link }}">
-          <div class="publi-header">{{ reco.tipo_contenido | upcase }}</div>
-          <div class="publi-badge">
-            {{ reco.tipo_contenido | slice: 0,1 | upcase }}
-          </div>
-          <div class="publi-content">
-            <h2 class="publi-title">{{ reco.titulo }}</h2>
-            <p class="publi-subtitle">{{ reco.bajada }}</p>
-            <p class="publi-text"></p>
-            <div class="publi-time">{{ reco.tiempo_estimado }}</div>
-            <div class="publi-recommendation">
-              {% if reco.imagen and reco.imagen != "" %}
-                <img src="{{ reco.imagen }}" alt="{{ reco.curador }}">
-              {% else %}
-                <img src="tink.png" alt="{{ reco.curador }}">
-              {% endif %}
-              <div>
-                <div class="recomienda-titulo">RECOMIENDA:</div>
-                <div class="recomienda-recomendador">{{ reco.curador }}</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    {% endfor %}
-       
-            </div>
-        </div>
-    </div>
 <!-- #endregion -->
 
 <!-- #region Videos que no te destruyen la psiquis -->
