@@ -1,36 +1,18 @@
-<!-- #region Recomendaciones -->
-{% assign edicion_actual = site.ediciones | where: "edicion_actual", true | first %}
-{% if edicion_actual == nil %}
-  {% assign ediciones_ordenadas = site.ediciones | sort: "numero" %}
-  {% assign edicion_actual = ediciones_ordenadas | last %}
-{% endif %}
+<!-- DEBUG RECOMENDACIONES -->
+<section style="border: 2px solid red; padding: 1rem; margin: 2rem 0;">
+  <h1>DEBUG Recomendaciones</h1>
 
-{% assign recos_actuales = site.recomendaciones | where: "edicion", edicion_actual.numero %}
+  <p>Total en <code>site.recomendaciones</code>:
+    {{ site.recomendaciones | size }}
+  </p>
 
-<section class="recomendaciones-section">
-  <header class="recomendaciones-header">
-    <h1>Recomendaciones</h1>
-    <p>Textos, podcasts y otras cosas que valen la pena esta semana.</p>
-  </header>
-
-  {% if recos_actuales and recos_actuales.size > 0 %}
-  <ul class="recomendaciones-list">
-    {% for reco in recos_actuales %}
-    <li class="reco-item">
-      <a href="{{ reco.link }}" target="_blank">
-        {{ reco.titulo }}
-      </a>
-      {% if reco.tipo_contenido %}
-        – {{ reco.tipo_contenido }}
-      {% endif %}
-      {% if reco.tiempo_estimado %}
-        ({{ reco.tiempo_estimado }})
-      {% endif %}
-    </li>
+  <ul>
+    {% for reco in site.recomendaciones %}
+      <li>
+        path: {{ reco.path }}<br>
+        titulo: {{ reco.titulo }}<br>
+        edicion: {{ reco.edicion }}
+      </li>
     {% endfor %}
   </ul>
-  {% else %}
-  <p>No hay recomendaciones cargadas para esta edición.</p>
-  {% endif %}
 </section>
-<!-- #endregion -->
