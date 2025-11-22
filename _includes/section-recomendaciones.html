@@ -14,39 +14,21 @@
   </header>
 
   {% if recos_actuales and recos_actuales.size > 0 %}
-  <div class="recomendaciones-list">
+  <ul class="recomendaciones-list">
     {% for reco in recos_actuales %}
-    <article class="reco-item">
-      <a href="{{ reco.link }}" target="_blank" class="reco-link">
-        {% if reco.imagen %}
-        <div class="reco-thumb">
-          <img src="{{ reco.imagen }}" alt="{{ reco.titulo }}">
-        </div>
-        {% endif %}
-
-        <div class="reco-text">
-          <div class="reco-meta">
-            {% if reco.tipo_contenido %}
-            <span class="reco-tipo">{{ reco.tipo_contenido }}</span>
-            {% endif %}
-            {% if reco.tiempo_estimado %}
-            <span class="reco-tiempo">{{ reco.tiempo_estimado }}</span>
-            {% endif %}
-          </div>
-
-          <h2 class="reco-titulo">{{ reco.titulo }}</h2>
-
-          <div class="reco-curado">
-            {% if reco.curador %}
-            <span>Curado por {{ reco.curador }}</span>
-            {% endif %}
-            <span>Edición {{ edicion_actual.numero }}</span>
-          </div>
-        </div>
+    <li class="reco-item">
+      <a href="{{ reco.link }}" target="_blank">
+        {{ reco.titulo }}
       </a>
-    </article>
+      {% if reco.tipo_contenido %}
+        – {{ reco.tipo_contenido }}
+      {% endif %}
+      {% if reco.tiempo_estimado %}
+        ({{ reco.tiempo_estimado }})
+      {% endif %}
+    </li>
     {% endfor %}
-  </div>
+  </ul>
   {% else %}
   <p>No hay recomendaciones cargadas para esta edición.</p>
   {% endif %}
