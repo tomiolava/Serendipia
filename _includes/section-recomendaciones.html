@@ -1,3 +1,4 @@
+<!-- #region Recomendaciones -->
 {% assign edicion_actual = site.ediciones | where: "edicion_actual", true | first %}
 {% if edicion_actual == nil %}
   {% assign ediciones_ordenadas = site.ediciones | sort: "numero" %}
@@ -6,26 +7,48 @@
 
 {% assign recos_actuales = site.recomendaciones | where: "edicion", edicion_actual.numero %}
 
-<div style="border:1px solid #ccc; padding:1rem; margin:2rem 0;">
-  <h2>Recomendaciones (edición {{ edicion_actual.numero }})</h2>
+<section class="recomendaciones-section">
+  <header class="recomendaciones-header">
+    <h1>Recomendaciones</h1>
+    <p>Textos, podcasts y cosas que valen la pena esta semana.</p>
+  </header>
 
   {% if recos_actuales and recos_actuales.size > 0 %}
-    <ul>
-      {% for reco in recos_actuales %}
-        <li>
-          <a href="{{ reco.link }}" target="_blank">
-            {{ reco.titulo }}
-          </a>
-          {% if reco.tipo_contenido %}
-            – {{ reco.tipo_contenido }}
-          {% endif %}
-          {% if reco.tiempo_estimado %}
-            ({{ reco.tiempo_estimado }})
-          {% endif %}
-        </li>
-      {% endfor %}
-    </ul>
+  <div class="recomendaciones-list">
+    {% for reco in recos_actuales %}
+    <article class="reco-item">
+      <a href="{{ reco.link }}" target="_blank" class="reco-link">
+        {% if reco.imagen %}
+        <div class="reco-thumb">
+          <img src="{{ reco.imagen }}" alt="{{ reco.titulo }}">
+        </div>
+        {% endif %}
+
+        <div class="reco-text">
+          <div class="reco-meta">
+            {% if reco.tipo_contenido %}
+            <span class="reco-tipo">{{ reco.tipo_contenido }}</span>
+            {% endif %}
+            {% if reco.tiempo_estimado %}
+            <span class="reco-tiempo">{{ reco.tiempo_estimado }}</span>
+            {% endif %}
+          </div>
+
+          <h2 class="reco-titulo">{{ reco.titulo }}</h2>
+
+          <div class="reco-curado">
+            {% if reco.curador %}
+            <span>Curado por {{ reco.curador }}</span>
+            {% endif %}
+            <span>Edición {{ edicion_actual.numero }}</span>
+          </div>
+        </div>
+      </a>
+    </article>
+    {% endfor %}
+  </div>
   {% else %}
-    <p>No hay recomendaciones cargadas para esta edición.</p>
+  <p>No hay recomendaciones cargadas para esta edición.</p>
   {% endif %}
-</div>
+</section>
+<!-- #endregion -->
