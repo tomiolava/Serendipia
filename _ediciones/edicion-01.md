@@ -2,7 +2,7 @@
 layout: edicion
 numero: 1
 titulo: "Nombre de la edición"
-edicion_actual: true
+edicion_actual: false
 
 videos:
   - titulo: "Un corto espectacular"
