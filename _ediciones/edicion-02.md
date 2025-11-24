@@ -4,5 +4,5 @@ numero: 2
 edicion_actual: true
 titulo: "Edición 2"
 fecha: 2025-12-01
-descripcion: "Un breve texto sobre esta edición."
+descripcion: "Esta es la segunda edición de Serendipia."
 ---
