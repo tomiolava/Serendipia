@@ -4,8 +4,12 @@ index 4a7cc9ee9b9e24b23a6918a1b7bf65a573178507..a9b06204578504e2a59c2f2ebda8490b
 --- a/_includes/section-recomendaciones.html
 +++ b/_includes/section-recomendaciones.html
 @@ -1,25 +1,37 @@
- {% assign edicion_actual = site.ediciones | where: "edicion_actual", true | first | default: (site.ediciones | sort: "numero" | last) %}
- {% assign tarjetas = site.recomendaciones | where: "edicion", edicion_actual.numero %}
+{% assign tarjetas = site.recomendaciones %}
+
+<p style="color:red; font-size: 12px;">
+  Debug: encontré {{ tarjetas | size }} recomendaciones en la colección.
+</p>
+
  
 -<section class="publi-grid">
 -  <header class="publi-header">
