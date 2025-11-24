@@ -14,16 +14,17 @@
   | where: "edicion", edicion_actual.numero
 -%}
 
-<div class="bg-videos">
-  <div class="supervids">
+<div class="headervids">
+  <div class="headervids-main">
+    <img src="youpause-rounded.svg" class="headervids-icon" alt="Ícono Videos">
+    <h1 class="headervids-title">Videos</h1>
+  </div>
+  <p class="headervids-subtitle">
+    QUE NO TE DESTRUYEN LA PSIQUIS
+  </p>
+</div>
+<div class="lineavidheader"></div>
 
-    <!-- Header igual al original -->
-    <div class="headervids">
-      <img src="youpause-rounded.svg" height="40px" alt="Ícono Videos">
-      <h1>Videos</h1>
-      <p>que no te destruyen la psiquis</p>
-    </div>
-    <div class="lineavidheader"></div>
 
     <div class="containervids">
       {%- for i in (0..2) -%}
