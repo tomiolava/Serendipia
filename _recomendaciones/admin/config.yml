@@ -1,0 +1,35 @@
+backend:
+  name: github
+  repo: tomiolava/Serendipia   # usuario/repositorio
+  branch: master
+
+local_backend: false
+
+media_folder: "img/uploads"    # dónde se guardan las imágenes en el repo
+public_folder: "/img/uploads"  # cómo se referencian desde el sitio
+
+collections:
+  - name: "recomendaciones"
+    label: "Recomendaciones"
+    label_singular: "Recomendación"
+    folder: "_recomendaciones"
+    create: true
+    extension: "md"
+    slug: "{{edicion}}-{{slug}}"
+    fields:
+      - { name: "layout", label: "Layout", widget: "hidden", default: "recomendacion" }
+
+      - { name: "titulo", label: "Título", widget: "string" }
+      - { name: "tipo_contenido", label: "Tipo de contenido", widget: "select", options: ["Texto", "Podcast", "Video"] }
+      - { name: "seccion", label: "Sección", widget: "select", options: ["Recomendaciones", "Videos"] }
+
+      - { name: "curador", label: "Curador", widget: "string", default: "Equipo Serendipia", required: false }
+      - { name: "tiempo_estimado", label: "Tiempo estimado", widget: "string", required: false }
+
+      - { name: "link", label: "Link", widget: "string", required: false }
+
+      - { name: "edicion", label: "Edición", widget: "number", value_type: "int", min: 1 }
+
+      - { name: "imagen", label: "Imagen", widget: "image", required: false }
+
+      - { name: "body", label: "Bajada / texto", widget: "markdown", required: false }
