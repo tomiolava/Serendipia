@@ -1,25 +1,64 @@
-{% assign edicion_actual = site.ediciones | where: "edicion_actual", true | first | default: (site.ediciones | sort: "numero" | last) %}
-{% assign tarjetas = site.recomendaciones | where: "edicion", edicion_actual.numero %}
-
-<section class="publi-grid">
-  <header class="publi-header">
-    <h1>Recomendaciones</h1>
-    <p>Curadas para la edición {{ edicion_actual.numero }}</p>
-  </header>
-
-  {% for card in tarjetas %}
-    <article class="publi-card">
-      <img src="{{ card.imagen }}" alt="{{ card.alt }}">
-      <div class="publi-card-content">
-        <div class="publi-card-tag">{{ card.categoria }}</div>
-        <h2>{{ card.titulo }}</h2>
-        <p>{{ card.descripcion }}</p>
-        {% if card.link %}<a href="{{ card.link }}" target="_blank" class="publi-card-link">Ver más</a>{% endif %}
-      </div>
-    </article>
-  {% endfor %}
-
-  {% if tarjetas == empty %}
-    <p>Pronto vas a encontrar acá nuevas recomendaciones.</p>
-  {% endif %}
-</section>
+ (cd "$(git rev-parse --show-toplevel)" && git apply --3way <<'EOF' 
+diff --git a/_includes/section-recomendaciones.html b/_includes/section-recomendaciones.html
+index 4a7cc9ee9b9e24b23a6918a1b7bf65a573178507..a9b06204578504e2a59c2f2ebda8490bdb04c85a 100644
+--- a/_includes/section-recomendaciones.html
++++ b/_includes/section-recomendaciones.html
+@@ -1,25 +1,37 @@
+ {% assign edicion_actual = site.ediciones | where: "edicion_actual", true | first | default: (site.ediciones | sort: "numero" | last) %}
+ {% assign tarjetas = site.recomendaciones | where: "edicion", edicion_actual.numero %}
+ 
+-<section class="publi-grid">
+-  <header class="publi-header">
+-    <h1>Recomendaciones</h1>
+-    <p>Curadas para la edición {{ edicion_actual.numero }}</p>
+-  </header>
++<section class="cuadribody">
++  <div class="grid-container">
++    {% for card in tarjetas %}
++      {% assign resumen = card.bajada | default: card.content | markdownify | strip_html | truncate: 200 %}
++      {% assign tag = card.tipo_contenido | default: card.tipo | default: card.seccion %}
+ 
+-  {% for card in tarjetas %}
+-    <article class="publi-card">
+-      <img src="{{ card.imagen }}" alt="{{ card.alt }}">
+-      <div class="publi-card-content">
+-        <div class="publi-card-tag">{{ card.categoria }}</div>
+-        <h2>{{ card.titulo }}</h2>
+-        <p>{{ card.descripcion }}</p>
+-        {% if card.link %}<a href="{{ card.link }}" target="_blank" class="publi-card-link">Ver más</a>{% endif %}
++      <div class="publi-card" data-id="{{ forloop.index }}"{% if card.link %} data-link="{{ card.link }}"{% endif %}>
++        {% if tag %}<div class="publi-header">{{ tag }}</div>{% endif %}
++        {% if card.badge %}<div class="publi-badge">{{ card.badge }}</div>{% endif %}
++
++        <div class="publi-content">
++          {% if card.titulo %}<h2 class="publi-title">{{ card.titulo }}</h2>{% endif %}
++          {% if resumen %}<p class="publi-subtitle">{{ resumen }}</p>{% endif %}
++          {% if card.publi_text %}<p class="publi-text">{{ card.publi_text }}</p>{% endif %}
++          {% if card.tiempo_estimado %}<div class="publi-time">{{ card.tiempo_estimado }}</div>{% endif %}
++
++          {% if card.curador or card.imagen %}
++            <div class="publi-recommendation">
++              {% if card.imagen %}<img src="{{ card.imagen }}" alt="{{ card.curador | default: card.titulo }}">{% endif %}
++              <div>
++                <div class="recomienda-titulo">RECOMIENDA:</div>
++                {% if card.curador %}<div class="recomienda-recomendador">{{ card.curador }}</div>{% endif %}
++              </div>
++            </div>
++          {% endif %}
++        </div>
+       </div>
+-    </article>
+-  {% endfor %}
++    {% endfor %}
+ 
+-  {% if tarjetas == empty %}
+-    <p>Pronto vas a encontrar acá nuevas recomendaciones.</p>
+-  {% endif %}
++    {% if tarjetas == empty %}
++      <p>Pronto vas a encontrar acá nuevas recomendaciones.</p>
++    {% endif %}
++  </div>
+ </section>
+ 
+EOF
+)
