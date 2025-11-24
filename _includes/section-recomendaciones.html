@@ -5,11 +5,6 @@
 {%- endif -%}
 
 {%- assign tarjetas = site.recomendaciones | where: "edicion", edicion_actual.numero -%}
-
-<p style="color:red; font-size: 12px;">
-  Debug Recos: edicion_actual = {{ edicion_actual.numero }} / tarjetas = {{ tarjetas | size }}
-</p>
-
 <section class="cuadribody">
   <div class="grid-container">
     {%- for card in tarjetas -%}
