@@ -1172,3 +1172,46 @@
 
 
 /* #endregion */
+
+/* --- Ajustes del header de Videos (forzados para que se vean prolijos) --- */
+
+.headervids {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+  padding: 16px 0 8px;
+}
+
+.headervids-main {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.headervids-icon {
+  width: 48px;
+  height: auto;
+  display: block;
+  flex-shrink: 0;
+}
+
+.headervids-title {
+  margin: 0;
+  line-height: 1;
+  font-size: 2rem;
+}
+
+.headervids-subtitle {
+  margin: 4px 0 0 58px;
+  font-size: 0.85rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  opacity: 0.9;
+}
+
+.lineavidheader {
+  width: 100%;
+  border-bottom: 1px solid #9ac2ff;
+  margin-top: 8px;
+}
