@@ -1,8 +1,6 @@
 {%- comment -%}
   Include: videos.html
   Sección dinámica de Videos que no te destruyen la psiquis.
-  Usa la edicion_actual y los items de site.recomendaciones
-  con seccion: "Videos" y esa edicion.
 {%- endcomment -%}
 
 {%- assign edicion_actual = site.ediciones | where: "edicion_actual", true | first -%}
@@ -18,8 +16,10 @@
 
 <div class="bg-videos">
   <div class="supervids">
+
+    <!-- Header igual al original -->
     <div class="headervids">
-      <img src="youpause.svg" height="40px" alt="">
+      <img src="youpause.svg" height="40px" alt="Ícono Videos">
       <h1>Videos</h1>
       <p>que no te destruyen la psiquis</p>
     </div>
@@ -54,6 +54,7 @@
             <p>{{ descripcion }}</p>
 
           {%- else -%}
+            <!-- Placeholder cuando falta algún video -->
             <div class="bg-container-vids">
               <img src="/img/video-placeholder.jpg" alt="Próximamente" class="bg-vids">
             </div>
