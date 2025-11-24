@@ -26,7 +26,82 @@
         <div class="bg-container-vids">
           <img src="{{ video.imagen }}" alt="{{ video.titulo }}" class="bg-vids">
         </div>
-        {% if video.badge %}
+        {% if video.badge %}{%- comment -%}
+  Include: videos.html
+
+  Lógica:
+  - Detecta la edicion_actual (o, si no hay, la última por numero).
+  - Filtra los items de site.recomendaciones con:
+      seccion: "Videos"
+      edicion: edicion_actual.numero
+  - Muestra siempre 3 tarjetas:
+      - si hay menos de 3 videos, rellena con placeholders.
+{%- endcomment -%}
+
+{%- assign edicion_actual = site.ediciones | where: "edicion_actual", true | first -%}
+{%- if edicion_actual == nil -%}
+  {%- assign ediciones_ordenadas = site.ediciones | sort: "numero" -%}
+  {%- assign edicion_actual = ediciones_ordenadas | last -%}
+{%- endif -%}
+
+{%- assign videos_edicion = site.recomendaciones | where: "seccion", "Videos" | where: "edicion", edicion_actual.numero -%}
+
+<div class="bg-videos">
+  <div class="supervids">
+    <div class="headervids">
+      <img src="youpause.svg" height="40px" alt="">
+      <h1>Videos</h1>
+      <p>que no te destruyen la psiquis</p>
+    </div>
+    <div class="lineavidheader"></div>
+
+    <div class="containervids">
+
+      {%- for i in (0..2) -%}
+        {%- assign video = videos_edicion[i] -%}
+
+        <div class="vids">
+          {%- if video -%}
+            {%- assign thumb = video.imagen | default: "/img/video-placeholder.jpg" -%}
+            {%- assign titulo = video.titulo | default: "Video recomendado" -%}
+            {%- assign descripcion = video.bajada | default: video.descripcion | default: video.content | markdownify | strip_html | truncate: 160 -%}
+            {%- assign badge = video.badge | default: "V" -%}
+
+            {%- if video.link -%}
+              <a href="{{ video.link }}" class="vid-link" target="_blank" rel="noopener"></a>
+            {%- endif -%}
+
+            <div class="bg-container-vids">
+              <img src="{{ thumb }}" alt="{{ titulo }}" class="bg-vids">
+            </div>
+
+            <div class="vid-badge">{{ badge }}</div>
+            <h1>{{ titulo }}</h1>
+            <div class="lineavid"></div>
+            <p>{{ descripcion }}</p>
+
+          {%- else -%}
+            {%- comment -%}
+              Placeholder cuando no hay suficientes videos en esta edición
+            {%- endcomment -%}
+
+            <div class="bg-container-vids">
+              <img src="/img/video-placeholder.jpg" alt="Próximamente" class="bg-vids">
+            </div>
+
+            <div class="vid-badge">+</div>
+            <h1>Nuevo video muy pronto</h1>
+            <div class="lineavid"></div>
+            <p>Estamos buscando contenido que no te destruya la psiquis para sumar a esta edición.</p>
+
+          {%- endif -%}
+        </div>
+      {%- endfor -%}
+
+    </div> <!-- .containervids -->
+  </div> <!-- .supervids -->
+</div> <!-- .bg-videos -->
+
         <div class="vid-badge">{{ video.badge }}</div>
         {% endif %}
         <h1>{{ video.titulo }}</h1>
