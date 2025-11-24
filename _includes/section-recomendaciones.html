@@ -1,5 +1,25 @@
-<section style="border: 5px solid fuchsia; padding: 20px; margin: 20px 0;">
-  <h1>DEBUG RECOMENDACIONES EN LA HOME</h1>
-  <p>Si ves esto, el include section-recomendaciones.html se está ejecutando.</p>
-</section>
+{% assign edicion_actual = site.ediciones | where: "edicion_actual", true | first | default: (site.ediciones | sort: "numero" | last) %}
+{% assign tarjetas = site.recomendaciones | where: "edicion", edicion_actual.numero %}
 
+<section class="publi-grid">
+  <header class="publi-header">
+    <h1>Recomendaciones</h1>
+    <p>Curadas para la edición {{ edicion_actual.numero }}</p>
+  </header>
+
+  {% for card in tarjetas %}
+    <article class="publi-card">
+      <img src="{{ card.imagen }}" alt="{{ card.alt }}">
+      <div class="publi-card-content">
+        <div class="publi-card-tag">{{ card.categoria }}</div>
+        <h2>{{ card.titulo }}</h2>
+        <p>{{ card.descripcion }}</p>
+        {% if card.link %}<a href="{{ card.link }}" target="_blank" class="publi-card-link">Ver más</a>{% endif %}
+      </div>
+    </article>
+  {% endfor %}
+
+  {% if tarjetas == empty %}
+    <p>Pronto vas a encontrar acá nuevas recomendaciones.</p>
+  {% endif %}
+</section>
